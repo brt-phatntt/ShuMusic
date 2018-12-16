@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view_act_main">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways">
+            <RelativeLayout
+                android:id="@+id/main_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_bar_size"
+                    android:minHeight="@dimen/action_bar_size"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true">
+                </android.support.v7.widget.Toolbar>
+
+
+                <LinearLayout
+                    android:id="@+id/miniPlayer"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/mini_player_height"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/mini_player_padding_left"
+                    android:paddingRight="@dimen/mini_player_padding_right"
+                    android:layout_below="@id/toolbar"
+                    android:background="?android:selectableItemBackground"
+                    app:layout_collapseMode="parallax">
+                    <ImageView
+                        android:id="@+id/album_art_mini_player"
+                        android:layout_width="@dimen/action_bar_size"
+                        android:layout_height="@dimen/action_bar_size"
+                        android:scaleType="fitXY"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="2"
+                        android:padding="5dp">
+                        <TextView
+                            android:id="@+id/song_name_mini_player"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Empty Queue!"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:scrollHorizontally="true"
+                            android:textSize="15sp"
+                            android:maxLines="1"
+                            android:typeface="monospace"
+                            android:paddingLeft="@dimen/textview_mini_player_padding_left"
+                            android:paddingRight="@dimen/textview_mini_player_padding_right"
+                            android:layout_gravity="start|center_vertical"
+                            android:gravity="center_vertical"
+                            android:textColor="#FFF"/>
+                        <TextView
+                            android:id="@+id/artist_name_mini_player"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Artist"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:scrollHorizontally="true"
+                            android:textSize="12sp"
+                            android:maxLines="1"
+                            android:typeface="monospace"
+                            android:paddingLeft="@dimen/mini_player_padding_left"
+                            android:paddingRight="@dimen/mini_player_padding_right"
+                            android:layout_gravity="start|center_vertical"
+                            android:gravity="center_vertical"
+                            android:textColor="#FFF"/>
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/play_pause_mini_player"
+                        android:layout_width="@dimen/action_bar_size"
+                        android:layout_height="@dimen/action_bar_size"
+                        android:src="@drawable/ic_play_arrow_black_24dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="@dimen/mini_player_play_pause_padding"/>
+                    <ImageView
+                        android:id="@+id/skip_next_mini_player"
+                        android:layout_width="@dimen/action_bar_size"
+                        android:layout_height="@dimen/action_bar_size"
+                        android:src="@drawable/ic_skip_next_black_24dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="@dimen/mini_player_play_next_padding"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/bottom_content" />
+
+</android.support.design.widget.CoordinatorLayout>

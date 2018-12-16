@@ -1,0 +1,30 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">ShuMusic</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add_favourite">Add to favourite</string>
+    <string name="action_play_next">Play next</string>
+
+
+    <!--Strings For Shared Preferences-->
+    <string name="pref_hide_short_clips">pref_hide_short_clips</string>
+    <string name="pref_hide_tracks_starting_with_1">pref_hide_tracks_starting_with_1</string>
+    <string name="pref_hide_tracks_starting_with_2">pref_hide_tracks_starting_with_2</string>
+    <string name="pref_hide_tracks_starting_with_3">pref_hide_tracks_starting_with_3</string>
+    <string name="pref_text_font">pref_text_font</string>
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">close drawer</string>
+    <string name="pref_tab_sequence">pref_tab_sequence</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="durationformatshort" translatable="false"><xliff:g id="format">%2$d:%3$02d</xliff:g></string>
+    <string name="durationformatlong" translatable="false"><xliff:g id="format">%1$d:%2$02d:%3$02d</xliff:g></string>
+
+    <!--slide animation duration-->
+    <string name="slide_duration">500</string>
+
+    <string name="notification_channel_id">channel_1</string>
+    <string name="channel_name">YoMusic_CH_1</string>
+    <string name="channel_description">For YOMusic Channel - 1</string>
+</resources>
