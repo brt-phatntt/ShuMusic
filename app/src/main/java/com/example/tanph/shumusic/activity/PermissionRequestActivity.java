@@ -45,7 +45,7 @@ public class PermissionRequestActivity extends AppCompatActivity {
             MyApplication.setService(mediaPlayerService);
             mBound = true;
 
-            Log.d("YOGI","Service Bounded, Launch Main Activity");
+            Log.d("SHU","Service Bounded, Launch Main Activity");
             startActivity(new Intent(PermissionRequestActivity.this,MainActivity.class));
             finish();
         }
@@ -60,7 +60,7 @@ public class PermissionRequestActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("YOGI","oncreate of permision");
+        Log.d("SHU","oncreate of permision");
         if(checkAndRequestPermissions())
         {
             BindService();
@@ -74,12 +74,12 @@ public class PermissionRequestActivity extends AppCompatActivity {
         {
             unbindService(mServiceConnection);
             mBound=false;
-            Log.d("YOGI","Service Unbounded from Permission");
+            Log.d("SHU","Service Unbounded from Permission");
         }
     }
 
     private void BindService() {
-        Log.d("YOGI","Service is getting Binded");
+        Log.d("SHU","Service is getting Binded");
         Intent intent = new Intent(this,MediaPlayerService.class);
         startService(intent);
         bindService(intent,mServiceConnection,BIND_AUTO_CREATE);

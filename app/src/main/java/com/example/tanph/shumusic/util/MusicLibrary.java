@@ -478,17 +478,7 @@ public class MusicLibrary {
         String[] projection = {
                 MediaStore.Audio.Albums._ID
         };
-        /*String selection = MediaStore.Audio.Media.IS_MUSIC+"!=0"+" AND "+MediaStore.Audio.Media.ARTIST_ID+"="+artist_id;*/
 
-        /*String sortorder="";
-        if(sort_order == Constants.SORT_ORDER.ASC)
-        {
-            sortorder = MediaStore.Audio.Media.TITLE+" ASC";
-        }
-        else
-        {
-            sortorder = MediaStore.Audio.Media.TITLE+" DESC";
-        }*/
 
         Cursor cursor = null;
 
@@ -499,7 +489,7 @@ public class MusicLibrary {
                 null,
                 null);
 
-        Log.d("YOGI","getFirstAlbumID Cursor = "+cursor);
+        Log.d("SHU","getFirstAlbumID Cursor = "+cursor);
         if(cursor!=null && cursor.getCount()>0)
         {
             cursor.moveToFirst();

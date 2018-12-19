@@ -10,8 +10,7 @@ public class FontFactory {
     public static Typeface getFont()
     {
         Typeface t = Typeface.MONOSPACE;
-        switch (MyApplication.getPref()
-                .getInt(MyApplication.getContext().getString(R.string.pref_text_font), Constants.FONTS.MONOSPACE))
+        switch (MyApplication.getPref().getInt(MyApplication.getContext().getString(R.string.pref_text_font), Constants.FONTS.MONOSPACE))
         {
             case Constants.FONTS.NORMAL:
                 t = Typeface.DEFAULT;
@@ -22,7 +21,7 @@ public class FontFactory {
             case Constants.FONTS.SERIF:
                 t = Typeface.SERIF;
                 break;
-        };
+        }
         return t;
     }
 }

@@ -102,14 +102,14 @@ public class MainActivity extends AppCompatActivity
         mediaPlayerService = MyApplication.getService();
 
         mediaPlayerService.onTaskRemoved = false;
-        Log.d("YOGI","onCreate of MainActivity and onTaskRemoved = "+mediaPlayerService.onTaskRemoved);
+        Log.d("SHU","onCreate of MainActivity and onTaskRemoved = "+mediaPlayerService.onTaskRemoved);
         /*if(MyApplication.getContext() == this)
         {
-            Log.d("YOGI","YES");
+            Log.d("SHU","YES");
         }
         else
         {
-            Log.d("YOGI","NO");
+            Log.d("SHU","NO");
         }*/
         setContentView(R.layout.activity_main);
 
@@ -141,10 +141,10 @@ public class MainActivity extends AppCompatActivity
         buttonNext.setOnClickListener(this);
 
         songNameMiniPlayer = findViewById(R.id.song_name_mini_player);
-        songNameMiniPlayer.setTypeface(FontFactory.getFont());
+        //songNameMiniPlayer.setTypeface(FontFactory.getFont());
 
         artistNameMiniPlayer = findViewById(R.id.artist_name_mini_player);
-        artistNameMiniPlayer.setTypeface(FontFactory.getFont());
+        //artistNameMiniPlayer.setTypeface(FontFactory.getFont());
 
         albumArt = findViewById(R.id.album_art_mini_player);
         drawable = ContextCompat.getDrawable(this,R.drawable.image1).mutate();
@@ -162,14 +162,14 @@ public class MainActivity extends AppCompatActivity
 
 
         //get the tab sequence
-        String savedTabSeq = MyApplication.getPref().getString(MyApplication.getContext()
-                .getString(R.string.pref_tab_sequence), Constants.TABS.DEFAULT_SEQ);
-        StringTokenizer stringTokenizer = new StringTokenizer(savedTabSeq,",");
-        savedTabSeqInt = new int[Constants.TABS.NUMBER_OF_TABS];
-        for(int i=0;i<Constants.TABS.NUMBER_OF_TABS;i++)
-        {
-            savedTabSeqInt[i] = Integer.parseInt(stringTokenizer.nextToken());
-        }
+//        String savedTabSeq = MyApplication.getPref().getString(MyApplication.getContext()
+//                .getString(R.string.pref_tab_sequence), Constants.TABS.DEFAULT_SEQ);
+//        StringTokenizer stringTokenizer = new StringTokenizer(savedTabSeq,",");
+//        savedTabSeqInt = new int[Constants.TABS.NUMBER_OF_TABS];
+//        for(int i=0;i<Constants.TABS.NUMBER_OF_TABS;i++)
+//        {
+//            savedTabSeqInt[i] = Integer.parseInt(stringTokenizer.nextToken());
+//        }
 
         viewPager = findViewById(R.id.viewPager);
         setUpViewPager(viewPager);
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         if(getIntent()!=null)
         {
-            Log.d("YOGI",""+getIntent().getAction());
+            Log.d("SHU",""+getIntent().getAction());
         }
         MyApplication.setIsAppVisible(true);
 

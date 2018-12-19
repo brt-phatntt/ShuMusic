@@ -19,7 +19,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("YOGI","Application Created");
+        Log.d("SHU","Application Created");
         instance = this;
         pref = PreferenceManager.getDefaultSharedPreferences(this);
     }

@@ -28,7 +28,7 @@ public class Fragment_Artist extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("YOGI","onCreate Fragment_Artist");
+        Log.d("SHU","onCreate Fragment_Artist");
     }
 
     @Nullable
@@ -40,7 +40,7 @@ public class Fragment_Artist extends Fragment implements SwipeRefreshLayout.OnRe
 
         recyclerView = artist_view.findViewById(R.id.fragment_album_recycler_view);
         new LoadSongs().execute("");
-        Log.d("YOGI","onCreateView Fragment_Artist");
+        Log.d("SHU","onCreateView Fragment_Artist");
         return artist_view;
     }
 
@@ -105,7 +105,7 @@ public class Fragment_Artist extends Fragment implements SwipeRefreshLayout.OnRe
         @Override
         protected String doInBackground(String... strings) {
             fragment_artist_adapter = new Fragment_Artist_Adapter(getContext(), MusicLibrary.getInstance().getDataItemsForArtists());
-            Log.d("YOGI","doInBackground Fragment_Artist");
+            Log.d("SHU","doInBackground Fragment_Artist");
             return "Executed";
         }
 
@@ -117,7 +117,7 @@ public class Fragment_Artist extends Fragment implements SwipeRefreshLayout.OnRe
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setHasFixedSize(true);
-                Log.d("YOGI","doPostExecute Fragment_Artist");
+                Log.d("SHU","doPostExecute Fragment_Artist");
             }
         }
     }

@@ -41,12 +41,12 @@ public class NowPlayingActivity extends AppCompatActivity {
         {
             super.onBackPressed();
             overridePendingTransition(R.anim.fade_in,R.anim.slide_down_from_bottom);
-            Log.d("YOGI","no fragment");
+            Log.d("SHU","no fragment");
 
         }
         else {
             getSupportFragmentManager().popBackStack();
-            Log.d("YOGI","Fragment Count was "+count);
+            Log.d("SHU","Fragment Count was "+count);
         }
     }
 }

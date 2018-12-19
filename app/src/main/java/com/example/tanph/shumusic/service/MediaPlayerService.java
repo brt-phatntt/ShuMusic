@@ -55,16 +55,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
 
     public static final int STOPPED = -1, PAUSED = 0, PLAYING =1;
 
-    /*public static final String ACTION_PLAY = "com.example.musicplayer.ACTION_PLAY";
-    public static final String ACTION_PAUSE = "com.example.musicplayer.ACTION_PAUSE";
-    public static final String ACTION_PREVIOUS = "com.example.musicplayer.ACTION_PREVIOUS";
-    public static final String ACTION_NEXT = "com.example.musicplayer.ACTION_NEXT";
-    public static final String ACTION_STOP = "com.example.musicplayer.ACTION_STOP";*/
 
-    /*
-     * Boolean variable to check if the User has remvoed the task that comes
-     * from Service's Application.
-     */
     public boolean onTaskRemoved = false;
     //Notification Manager and Notification Id
     private static final int NOTIFICATION_ID = 101;
@@ -143,7 +134,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     @Override
     public IBinder onBind(Intent intent)
     {
-        Log.d("YOGI","onBind Service Thread : "+Thread.currentThread());
+        Log.d("SHU","onBind Service Thread : "+Thread.currentThread());
         return binder;
     }
 
@@ -153,7 +144,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("YOGI","onCreate Service Thread : "+Thread.currentThread());
+        Log.d("SHU","onCreate Service Thread : "+Thread.currentThread());
         volumehandler = new Handler(Looper.getMainLooper());
 
         //Initialize all the pending Intents for Notifications
@@ -402,7 +393,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         //onTaskRemoved = false;
-        Log.d("YOGI","onStartCommand action = "+intent.getAction());
+        Log.d("SHU","onStartCommand action = "+intent.getAction());
 
         //Set the Service in the MyApplication If it is not
         if (MyApplication.getService() == null)
@@ -416,7 +407,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
 
         if(intent!=null && intent.getAction()!=null)
         {
-            /*Log.d("YOGI","action = "+intent.getAction());*/
+            /*Log.d("SHU","action = "+intent.getAction());*/
             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
         }
         return START_STICKY;
@@ -425,13 +416,13 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     @Override
     public boolean onUnbind(Intent intent) {
 
-        Log.d("YOGI","onUnbind Service");
+        Log.d("SHU","onUnbind Service");
         return super.onUnbind(intent);
     }
 
     @Override    public void onDestroy() {
 
-        Log.d("YOGI","onDestroy Service");
+        Log.d("SHU","onDestroy Service");
         super.onDestroy();
 
         //Release the MediaPlayer
@@ -597,7 +588,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 {
                     if(mAudioPauseBecauseOfFocusLoss==true)
                     {
-                        Log.d("YOGI","call gone permanenet");
+                        Log.d("SHU","call gone permanenet");
                         resumeMedia();
                         mAudioPauseBecauseOfFocusLoss = false;
                     }
@@ -613,7 +604,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 if(getStatus() == PLAYING)
                 {
                     mAudioPauseBecauseOfFocusLoss = true;
-                    Log.d("YOGI","call incoming");
+                    Log.d("SHU","call incoming");
                     pauseMedia();
                 }
                 break;
@@ -623,7 +614,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 if(getStatus() == PLAYING)
                 {
                     mAudioPauseBecauseOfFocusLoss = true;
-                    Log.d("YOGI","call incoming transient");
+                    Log.d("SHU","call incoming transient");
                     pauseMedia();
                 }
                 break;
@@ -724,7 +715,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
             mediaPlayer.start();
             setStatus(PLAYING);
         }
-        Log.d("YOGI","Media Started");
+        Log.d("SHU","Media Started");
     }
 
     public void pauseMedia()
@@ -739,7 +730,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
             buildNotification();
             notifyUI();
         }
-        Log.d("YOGI","Media Paused");
+        Log.d("SHU","Media Paused");
     }
 
     private void stopMedia()
@@ -770,7 +761,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
             buildNotification();
             notifyUI();
         }
-        Log.d("YOGI","Media Resumed");
+        Log.d("SHU","Media Resumed");
     }
 
     public void skipToNext() {
@@ -995,7 +986,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                     case TelephonyManager.CALL_STATE_RINGING:
                         if(getStatus() == PLAYING)
                         {
-                            Log.d("YOGI","Call is Ringing, Media Player Paused");
+                            Log.d("SHU","Call is Ringing, Media Player Paused");
                             pauseMedia();
                             ongoingCall = true;
                         }
@@ -1005,7 +996,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                         {
                             if(ongoingCall)
                             {
-                                Log.d("YOGI","Call Halted, Media Player Resumed");
+                                Log.d("SHU","Call Halted, Media Player Resumed");
                                 ongoingCall = false;
                                 resumeMedia();
                             }
@@ -1056,31 +1047,14 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 if(currentTrack==null)
                     return;
 
-                //Initialize default notification icon to ic_media_pause
 
-                /*int notificationAction;
-
-                if(getStatus()==PLAYING)
-                {
-                    notificationAction = R.drawable.ic_pause_black_24dp;
-                    Log.d("YOGI","Notification : getStatus() = PLAYING" + notificationAction);
-                }
-                else
-                {
-                    notificationAction = R.drawable.ic_play_arrow_black_24dp;
-                    Log.d("YOGI","Notification : getStatus() = PAUSED" + notificationAction);
-                }*/
-
-                //Can use @SuppressWarnings("deprecation") to suppress the warnings
                 //For android O+, use notification_channel
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(MediaPlayerService.this,getString(R.string.notification_channel_id));
 
                 Bitmap largeIcon = null;
                 try
                 {
-                    /*//To handle the exception of null Uri being returned;
-                    largeIcon = BitmapFactory.decodeFile(MusicLibrary.getInstance().getAlbumUri(getCurrentTrack().getAlbum_id()).toString());
-                    Log.d("YOGI","largeIcon = "+largeIcon);*/
+
 
                     largeIcon = Glide.
                             with(MediaPlayerService.this)
@@ -1154,20 +1128,20 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 builder.addAction(new NotificationCompat.Action(R.drawable.ic_skip_previous_black_24dp,"previous",previous_Intent));
                 if(getStatus()==PLAYING)
                 {
-                    Log.d("YOGI","NOTIFICATION PLAYINGF and PAUSE BUTTON");
+                    Log.d("SHU","NOTIFICATION PLAYINGF and PAUSE BUTTON");
                     builder.addAction(new NotificationCompat.Action(R.drawable.ic_pause_black_24dp,"play_pause",play_pause_Intent));
                 }
                 else
                 {
                     builder.addAction(new NotificationCompat.Action(R.drawable.ic_play_arrow_black_24dp,"play_pause",play_pause_Intent));
-                    Log.d("YOGI","NOTIFICATION PAUSED or STOPPED and PLAY BUTTON");
+                    Log.d("SHU","NOTIFICATION PAUSED or STOPPED and PLAY BUTTON");
                 }
 
                 builder.addAction(new NotificationCompat.Action(R.drawable.ic_skip_next_black_24dp,"next",next_Intent));
                 builder.addAction(new NotificationCompat.Action(R.drawable.ic_close_black_24dp,"dismiss",dismiss_Intent));
 
                 //Set Ticker Message
-                builder.setTicker("YoMusic");
+                builder.setTicker("ShuMusic");
                 //Dismiss Notification upon click ?
                 builder.setAutoCancel(false);
                 //Set PendingIntent for Notification Click
@@ -1189,14 +1163,14 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 if(getStatus() == PLAYING)
                 {
                     startForeground(NOTIFICATION_ID,builder.build());
-                    Log.d("YOGI","NOTIFICATION PLAYINGF");
+                    Log.d("SHU","NOTIFICATION PLAYINGF");
                 }
                 else
                 {
                     stopForeground(false);
                     //Post a notification to be shown in the status bar
                     notificationManager.notify(NOTIFICATION_ID,builder.build());
-                    Log.d("YOGI","NOTIFICATION PAUSED or STOPPED");
+                    Log.d("SHU","NOTIFICATION PAUSED or STOPPED");
                 }
             }
         });
@@ -1219,11 +1193,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     }
 
 
-    /*private void removeNotification()
-    {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        Log.d("YOGI","NOTIFICATION REMOVED");
-    }*/
+
 
     //Receiver for HeadSet Plug and UnPlug
     private class HeadSetReceiver extends BroadcastReceiver{
@@ -1236,47 +1206,19 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
                 switch (state)
                 {
                     case 0:
-                        Log.d("YOGI","headset is unplugged");
+                        Log.d("SHU","headset is unplugged");
                         break;
                     case 1:
-                        Log.d("YOGI","headset is plugged");
+                        Log.d("SHU","headset is plugged");
                         break;
                     default:
-                        Log.d("YOGI","No Idea about Headset Status");
+                        Log.d("SHU","No Idea about Headset Status");
                 }
             }
         }
     }
 
-    /*private void decreaseVolumeGradually()
-    {
-        if(!mVolumeBeingRaised)
-        {
-            currentVolume = audioManager.getStreamVolume(audioManager.STREAM_MUSIC);
-        }
-        else
-        {
-            audioManager.setStreamVolume(audioManager.STREAM_MUSIC,currentVolume,0);
-            volumehandler.removeCallbacksAndMessages(gradualIncreaseVolumeRunnable);
-        }
-        volumehandler.post(gradualDecreaseVolumeRunnable);
-    }
 
-    private Runnable gradualDecreaseVolumeRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if(audioManager.getStreamVolume(audioManager.STREAM_MUSIC)>0)
-            {
-                mVolumeBeingDecreased = true;
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)-1,0);
-                volumehandler.postDelayed(this,100);
-            }
-            else
-            {
-                mVolumeBeingDecreased = false;
-            }
-        }
-    };*/
     private void increaseVolumeGradually() {
         //have to increase the volume from zero to current volume level gradually
         if(!mVolumeBeingRaised)
@@ -1323,7 +1265,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
         onTaskRemoved = true;
-        Log.d("YOGI","onTaskRemoved = "+onTaskRemoved);
+        Log.d("SHU","onTaskRemoved = "+onTaskRemoved);
         if(getStatus()!=PLAYING)
         {
             stopForeground(true);

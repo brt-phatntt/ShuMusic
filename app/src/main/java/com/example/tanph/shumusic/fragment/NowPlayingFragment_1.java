@@ -117,7 +117,7 @@ public class NowPlayingFragment_1 extends Fragment {
             {
                 overflowcounter++;
                 mProgressBar.postDelayed(mUpdateProgress,delay);
-                Log.d("YOGI","mUpdateProgress");
+                Log.d("SHU","mUpdateProgress");
             }
         }
     };
@@ -143,7 +143,7 @@ public class NowPlayingFragment_1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("YOGI","Now_Playing_Fragment_1_SetSongDetails");
+        Log.d("SHU","Now_Playing_Fragment_1_SetSongDetails");
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_now_playing_fragment_1, container, false);
 
@@ -302,13 +302,13 @@ public class NowPlayingFragment_1 extends Fragment {
                     .listener(new RequestListener<Bitmap>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-                            Log.d("YOGI","glide_load_failed_now_playing_fragment");
+                            Log.d("SHU","glide_load_failed_now_playing_fragment");
                             return false;
                         }
 
                         @Override
                         public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-                            Log.d("YOGI","glide_on_Resource_Ready_now_playing_fragment");
+                            Log.d("SHU","glide_on_Resource_Ready_now_playing_fragment");
                             doAlbumArtStuff(resource);
                             return false;
                         }
@@ -418,7 +418,7 @@ public class NowPlayingFragment_1 extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("YOGI","NowPlayingFragment Paused");
+        Log.d("SHU","NowPlayingFragment Paused");
         fragmentPaused = true;
         LocalBroadcastManager.getInstance(getContext().getApplicationContext()).unregisterReceiver(broadcastReceiver);
     }
@@ -438,7 +438,7 @@ public class NowPlayingFragment_1 extends Fragment {
         {
             mProgressBar.postDelayed(mUpdateProgress,10);
         }*/
-        Log.d("YOGI","NowPlayingFragment Resumed");
+        Log.d("SHU","NowPlayingFragment Resumed");
     }
 
     private class SetBlurredAlbumArt extends AsyncTask<Bitmap, Void, Drawable>

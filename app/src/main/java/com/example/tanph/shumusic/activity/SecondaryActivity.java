@@ -179,7 +179,7 @@ public class SecondaryActivity extends AppCompatActivity implements View.OnClick
             }
             else
             {
-                Log.d("YOGI","exit");
+                Log.d("SHU","exit");
                 //Restart App this should not happen
                 //why it should not happen..need to check the case
                 //System.exit(0);
